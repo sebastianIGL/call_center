@@ -43,17 +43,21 @@ def franja_horaria(row):
 
 df["franja_horaria"] = df["CREADO"].apply(franja_horaria)
 
-# a) Contar las categorías de RESPUESTA 1
-print("\nConteo de RESPUESTA 1:")
-print(df["RESPUESTA 1"].value_counts())
+# a) Contar las categorías de RESPUESTA 1 con porcentaje
+print("\nConteo y porcentaje de RESPUESTA 1:")
+conteo_resp1 = df["RESPUESTA 1"].value_counts()
+porcentaje_resp1 = df["RESPUESTA 1"].value_counts(normalize=True) * 100
+print(pd.DataFrame({"conteo": conteo_resp1, "porcentaje": porcentaje_resp1.round(2)}))
 
 # b) Contar RESPUESTA 2 agrupadas por RESPUESTA 1
 print("\nConteo de RESPUESTA 2 agrupadas por RESPUESTA 1:")
 print(df.groupby("RESPUESTA 1")["RESPUESTA 2"].value_counts())
 
-# c) Contar SERVICIO
-print("\nConteo de SERVICIO:")
-print(df["SERVICIO"].value_counts())
+# c) Contar SERVICIO con porcentaje
+print("\nConteo y porcentaje de SERVICIO:")
+conteo_servicio = df["SERVICIO"].value_counts()
+porcentaje_servicio = df["SERVICIO"].value_counts(normalize=True) * 100
+print(pd.DataFrame({"conteo": conteo_servicio, "porcentaje": porcentaje_servicio.round(2)}))
 
 # d) Contar solo los RUT que se repiten más de una vez
 ruts_repetidos = df["RUT"].value_counts()
@@ -61,25 +65,35 @@ ruts_mas_de_una_vez = ruts_repetidos[ruts_repetidos > 1]
 print("\nRUTs que se repiten más de una vez:")
 print(ruts_mas_de_una_vez)
 
-# e) Contar los días de la semana en español
-print("\nConteo de días de la semana (en español):")
-print(df["dia_de_semana_es"].value_counts())
+# e) Contar días de la semana en español con porcentaje
+print("\nConteo y porcentaje de días de la semana (en español):")
+conteo_dias = df["dia_de_semana_es"].value_counts()
+porcentaje_dias = df["dia_de_semana_es"].value_counts(normalize=True) * 100
+print(pd.DataFrame({"conteo": conteo_dias, "porcentaje": porcentaje_dias.round(2)}))
 
-# e) Contar franja horaria
-print("\nConteo de franja horaria:")
-print(df["franja_horaria"].value_counts())
+# f) Contar franja horaria con porcentaje
+print("\nConteo y porcentaje de franja horaria:")
+conteo_franja = df["franja_horaria"].value_counts()
+porcentaje_franja = df["franja_horaria"].value_counts(normalize=True) * 100
+print(pd.DataFrame({"conteo": conteo_franja, "porcentaje": porcentaje_franja.round(2)}))
 
-# f) Contar Plataforma
-print("\nConteo de Plataforma:")
-print(df["Plataforma"].value_counts())
+# g) Contar Plataforma con porcentaje
+print("\nConteo y porcentaje de Plataforma:")
+conteo_plataforma = df["Plataforma"].value_counts()
+porcentaje_plataforma = df["Plataforma"].value_counts(normalize=True) * 100
+print(pd.DataFrame({"conteo": conteo_plataforma, "porcentaje": porcentaje_plataforma.round(2)}))
 
-# g) Contar Cliente
-print("\nConteo de Cliente:")
-print(df["Cliente"].value_counts())
+# h) Contar Cliente con porcentaje
+print("\nConteo y porcentaje de Cliente:")
+conteo_cliente = df["Cliente"].value_counts()
+porcentaje_cliente = df["Cliente"].value_counts(normalize=True) * 100
+print(pd.DataFrame({"conteo": conteo_cliente, "porcentaje": porcentaje_cliente.round(2)}))
 
-# h) Contar Tipo IVR
-print("\nConteo de Tipo IVR:")
-print(df["Tipo IVR"].value_counts())
+# i) Contar Tipo IVR con porcentaje
+print("\nConteo y porcentaje de Tipo IVR:")
+conteo_ivr = df["Tipo IVR"].value_counts()
+porcentaje_ivr = df["Tipo IVR"].value_counts(normalize=True) * 100
+print(pd.DataFrame({"conteo": conteo_ivr, "porcentaje": porcentaje_ivr.round(2)}))
 
 columnas_reducidas = ["ID", "RESPUESTA 1", "RESPUESTA 2", "SERVICIO", "RUT", "CREADO", "Plataforma", "Cliente", "Tipo IVR"]
 df = df_total[columnas_reducidas]
