@@ -21,3 +21,7 @@ df_log_limpio = (
 )
 
 print(df_log_limpio)
+
+# Guardar el DataFrame limpio en un archivo CSV
+df_log_limpio.to_csv("logs.csv", index=False)
+print("Archivo logs.csv creado correctamente.")
